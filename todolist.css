@@ -48,3 +48,17 @@ opacity:1;
 #showhide{
     display: none;
 }
+table{
+    margin:auto;
+}
+.padd{
+    padding: 6px;
+    background: red;
+    color:white;
+    display:flex;
+}
+.delete{
+    margin-left:-11px;
+    background-color:rosybrown;
+    cursor: pointer;
+}
