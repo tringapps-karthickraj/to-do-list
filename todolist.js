@@ -56,19 +56,15 @@ if(sessionStorage.getItem('login') !=undefined ){
 
 }else{
    alert('pls sign in first');
-   //location.replace("file:///D:/html/html%20js/newtask2/task2-todolist/signin.html");
    location.href = "signin.html";
 }
 });
 function clearcomplete(){
     if(userdetails.todolist.length>0){
-        for(let i=0;i<userdetails.todolist.length;i++){
-            if(userdetails.todolist[i].checked == "yes"){
-                userdetails.todolist.splice(i,1);
-            }
-        }
-        display();
-    }
+       var completeClear =  userdetails.todolist.filter(check => check.checked =='no');
+       userdetails.todolist= completeClear;
+       display();
+        } 
 }
 function empty() {
     userdetails.todolist = [];
