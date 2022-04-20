@@ -39,7 +39,7 @@ function save() {
     localStorage['signup']=JSON.stringify(user);
 
 }
-function add() {
+function addtask() {
     let promt = prompt("task:");
     console.log(promt)
     if(promt.trim().length !=0){
