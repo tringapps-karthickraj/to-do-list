@@ -1,12 +1,11 @@
 let storage='';
 let user='';
-let findUser='';
 let userDetails='';
 $( document ).ready(function() {
     if(sessionStorage.getItem('login') !=undefined ){
         storage = JSON.parse(sessionStorage.getItem('login'));
         user = JSON.parse(localStorage['signup']);
-        findUser = user.users.find(ele => ele.email == storage.email && ele.password == storage.password);
+        let findUser = user.users.find(ele => ele.email == storage.email && ele.password == storage.password);
         userDetails = findUser;
         document.getElementById('showhide').style.display="block";
         if(userDetails.todolist.length > 0){
@@ -30,8 +29,8 @@ function empty() {
     display();
 }
 function save() {
-    storage = JSON.parse(sessionStorage.getItem('login'));
-     user = JSON.parse(localStorage['signup']);
+    // storage = JSON.parse(sessionStorage.getItem('login'));
+    //  user = JSON.parse(localStorage['signup']);
     for(let list of user.users){
         if(list.email == storage.email && list.password ==  storage.password){
             list.todolist = userDetails.todolist;
