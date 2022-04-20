@@ -18,7 +18,7 @@ $( document ).ready(function() {
 });
 function clearcomplete(){
     if(userDetails.todolist.length>0){
-       var completeClear =  userDetails.todolist.filter(check => check.checked =='no');
+       var completeClear =  userDetails.todolist.filter(check => check.checked ==false);
        userDetails.todolist= completeClear;
        display();
     } 
@@ -29,8 +29,6 @@ function empty() {
     display();
 }
 function save() {
-    // storage = JSON.parse(sessionStorage.getItem('login'));
-    //  user = JSON.parse(localStorage['signup']);
     for(let list of user.users){
         if(list.email == storage.email && list.password ==  storage.password){
             list.todolist = userDetails.todolist;
@@ -45,7 +43,7 @@ function add() {
     if(promt.trim().length !=0){
         let add= {
         "taskname":promt,
-        "checked":"no"
+        "checked":false
         }
     userDetails.todolist.push(add);
     display();
@@ -53,10 +51,10 @@ function add() {
 
 }
 function strike(idx){
-if(userDetails.todolist[idx].checked == "yes"){
-    userDetails.todolist[idx].checked = 'no';
+if(userDetails.todolist[idx].checked == true){
+    userDetails.todolist[idx].checked = false;
 }else{
-    userDetails.todolist[idx].checked = 'yes';
+    userDetails.todolist[idx].checked = true;
 }
    display();
 }
@@ -64,14 +62,12 @@ function display(){
     var html = '<table cellpadding="5">';
         let index = 0;
    for (let list of userDetails.todolist) {
-        html += '<tr>' ;
-        if(list.checked == 'yes'){
-            html+= '<td><div class="padd"><div onclick="strike(\'' + index + '\')"><s>' + list.taskname + '</s></div></td><td><div class="padd delete" onclick="deleteone(\'' + index + '\')">x</div></div></td>' ;
-        }else{
-            html+= '<td><div class="padd"><div onclick="strike(\'' + index + '\')">' + list.taskname + '</div></td><td><div class="padd delete" onclick="deleteone(\'' + index + '\')">x</div></div></td>' ;
-        }
+        html+= '<tr><td><div class="padd"><div onclick="strike(\'' + index + '\')">' ;
+
+        html+= list.checked ? '<s>' + list.taskname + '</s>' : list.taskname;
+
+        html+='</div></td><td><div class="padd delete" onclick="deleteone(\'' + index + '\')">x</div></div></td></tr>';
         index++;
-        html+='</tr>';
     }
     html +='</table>';
     document.getElementById('todo').innerHTML = html;
