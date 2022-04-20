@@ -43,7 +43,7 @@ function save() {
 function add() {
     let promt = prompt("task:");
     console.log(promt)
-    if(promt.trim()){
+    if(promt.trim().length !=0){
         let add= {
         "taskname":promt,
         "checked":"no"
