@@ -18,7 +18,7 @@ $( document ).ready(function() {
 });
 function clearcomplete(){
     if(userDetails.todolist.length>0){
-       var completeClear =  userDetails.todolist.filter(check => check.checked ==false);
+       var completeClear =  userDetails.todolist.filter(check => !check.checked);
        userDetails.todolist= completeClear;
        display();
     } 
@@ -51,7 +51,7 @@ function addtask() {
 
 }
 function strike(idx){
-if(userDetails.todolist[idx].checked == true){
+if(userDetails.todolist[idx].checked){
     userDetails.todolist[idx].checked = false;
 }else{
     userDetails.todolist[idx].checked = true;

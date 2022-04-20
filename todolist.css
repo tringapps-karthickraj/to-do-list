@@ -36,10 +36,6 @@ opacity: 0.9;
 button:hover {
 opacity:1;
 }
-.hide{
-    display: none;
-    color: red;
-}
 .body{
     text-align: center;
     height: 100%;
